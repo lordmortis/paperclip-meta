@@ -68,14 +68,14 @@ module Paperclip
               value
             else
               if !meta[style][:image_magick_failure] || item != :md5
-                meta[style] = meta_calc_style(style)[item]
+                meta[style] = meta_calc_style(style)
                 instance_write(:meta, ActiveSupport::Base64.encode64(Marshal.dump(meta)))
               end
               meta[style][item]
             end
           else
             if self.styles.include?(style)
-              meta[style] = meta_calc_style(style)[item]
+              meta[style] = meta_calc_style(style)
               instance_write(:meta, ActiveSupport::Base64.encode64(Marshal.dump(meta)))
               meta[style][item]
             else
